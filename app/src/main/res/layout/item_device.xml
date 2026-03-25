@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:background="?attr/selectableItemBackground">
+
+    <!-- Ícone do dispositivo -->
+    <ImageView
+        android:id="@+id/ivDeviceIcon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_info"
+        android:tint="@android:color/darker_gray" />
+
+    <!-- Informações do dispositivo -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingHorizontal="12dp"
+        android:gravity="center_vertical">
+
+        <!-- Nome do dispositivo -->
+        <TextView
+            android:id="@+id/tvDeviceName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nome do Dispositivo"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black" />
+
+        <!-- IP do dispositivo -->
+        <TextView
+            android:id="@+id/tvDeviceIp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="192.168.1.100"
+            android:textSize="12sp"
+            android:textColor="@android:color/darker_gray"
+            android:paddingVertical="4dp" />
+
+    </LinearLayout>
+
+    <!-- Seta para indicar clique -->
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_chevron_right"
+        android:tint="@android:color/darker_gray" />
+
+</LinearLayout>
