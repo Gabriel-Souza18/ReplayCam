@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">ReplayCam</string>
     <string name="save_replay">Salvar Replay</string>
+    <string name="record_button_start">REC</string>
+    <string name="record_button_stop">PARE</string>
+    <string name="save_button">SALVAR</string>
 </resources>

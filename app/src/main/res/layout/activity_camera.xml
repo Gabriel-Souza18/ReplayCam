@@ -30,7 +30,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Record Button -->
+    <!-- Record Button (Iniciar/Parar) -->
     <Button
         android:id="@+id/recordButton"
         android:layout_width="80dp"
@@ -43,6 +43,39 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginBottom="30dp"
+        android:visibility="visible" />
+
+    <!-- Save Button (Salvar segmentos) -->
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/button_azul_escuro"
+        android:text="SALVAR"
+        android:textColor="@android:color/white"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/stopButton"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="20dp"
+        android:visibility="invisible" />
+
+    <!-- Stop Button (Parar) -->
+    <Button
+        android:id="@+id/stopButton"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/button_salvar"
+        android:text="PARAR"
+        android:textColor="@android:color/white"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/saveButton"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
