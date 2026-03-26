@@ -5,70 +5,118 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#99F3FF"
     android:orientation="vertical"
     android:paddingHorizontal="16dp"
     android:paddingVertical="8dp"
     tools:context=".MainActivity">
 
     <!-- Título -->
-    <TextView
-        android:id="@+id/tvTitle"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Buscar Dispositivos"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        android:paddingVertical="12dp" />
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btn_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="144dp"
+            android:layout_marginEnd="145dp"
+            android:onClick="gravar"
+            android:text="Camera"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="63dp"
+            android:paddingVertical="12dp"
+            android:text="Buscar Dispositivos"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="40dp" />
+
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/rounded_edit_text"
+            android:hint="Procurar dispositivo..."
+            android:inputType="text"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="8dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/darker_gray"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            tools:layout_editor_absoluteX="58dp" />
+
+        <ProgressBar
+            android:id="@+id/pbLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="190dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginEnd="189dp"
+            android:paddingVertical="16dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="250dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvDevices"
+                android:layout_width="100dp"
+                android:layout_height="282dp"
+                android:layout_marginVertical="12dp"
+                android:layout_weight="1"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvNoDevices"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Nenhum dispositivo encontrado"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnRetry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_azul_escuro"
+                android:text="Tentar Novamente"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Buscador -->
-    <EditText
-        android:id="@+id/etSearch"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:hint="Procurar dispositivo..."
-        android:inputType="text"
-        android:paddingHorizontal="12dp"
-        android:paddingVertical="8dp"
-        android:background="@drawable/rounded_edit_text"
-        android:textColor="@android:color/black"
-        android:textColorHint="@android:color/darker_gray" />
 
     <!-- Loading progressbar -->
-    <ProgressBar
-        android:id="@+id/pbLoading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:paddingVertical="16dp"
-        android:visibility="visible" />
 
     <!-- RecyclerView para listar dispositivos -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvDevices"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginVertical="12dp"
-        android:visibility="gone" />
 
     <!-- Mensagem de erro -->
-    <TextView
-        android:id="@+id/tvNoDevices"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="Nenhum dispositivo encontrado"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:visibility="gone" />
 
     <!-- Botão tentar novamente -->
-    <Button
-        android:id="@+id/btnRetry"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tentar Novamente"
-        android:visibility="gone" />
 
 </LinearLayout>

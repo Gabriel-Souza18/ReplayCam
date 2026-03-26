@@ -26,6 +26,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ReplayCam">
         <activity
+            android:name=".cameraActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

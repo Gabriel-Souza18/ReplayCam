@@ -1,5 +1,6 @@
 package com.example.replaycam
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -8,6 +9,7 @@ import android.widget.TextView
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -155,6 +157,11 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         discoveryManager.stopDiscovery()
+    }
+
+    public fun gravar(v: View){
+        val intent = Intent(this, cameraActivity::class.java)
+        startActivity(intent)
     }
 
 
