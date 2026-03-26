@@ -2,6 +2,8 @@ package com.example.replaycam
 
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
+import android.view.KeyEvent
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -63,8 +65,18 @@ class cameraActivity : AppCompatActivity() {
             insets
         }
     }
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        return when (keyCode) {
+            KeyEvent.KEYCODE_VOLUME_UP, KeyEvent.KEYCODE_VOLUME_DOWN -> {
+                Toast.makeText(this, "Botão de volume pressionado", Toast.LENGTH_SHORT).show()
+                true
+            }
 
+            else -> super.onKeyDown(keyCode, event)
+        }
+    }
     private fun startCamera() {
+        Log.d("CameraActivity", "Iniciando câmera()")
         cameraProviderFuture = ProcessCameraProvider.getInstance(this)
         cameraProviderFuture.addListener({
             try {
@@ -96,6 +108,8 @@ class cameraActivity : AppCompatActivity() {
     }
 
     private fun startRecording() {
+        Log.d("CameraActivity", "Iniciando gravacao")
+
         val videoCapture = videoCapture ?: return
 
         recordingFile = File(
@@ -117,8 +131,12 @@ class cameraActivity : AppCompatActivity() {
                     }
                     is VideoRecordEvent.Finalize -> {
                         if (!videoRecordEvent.hasError()) {
+                            Log.d("CameraActivity", "Salvou o video")
+
                             showToast("Vídeo salvo: ${recordingFile?.absolutePath}")
                         } else {
+                            Log.d("CameraActivity", "ERRO na gravacao")
+
                             showToast("Erro ao gravar: ${videoRecordEvent.error}")
                         }
                     }
@@ -128,6 +146,8 @@ class cameraActivity : AppCompatActivity() {
     }
 
     private fun stopRecording() {
+        Log.d("CameraActivity", "Parou de gravar")
+
         // VideoCapture se para automaticamente, só precisamos resetar os estados
         isRecording = false
         recordButton.text = "REC"
